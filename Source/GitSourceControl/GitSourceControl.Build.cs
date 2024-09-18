@@ -17,8 +17,6 @@ public class GitSourceControl : ModuleRules
 				"SlateCore",
 				"InputCore",
 				"DesktopWidgets",
-				"EditorStyle",
-				"UnrealEd",
 				"SourceControl",
 				"SourceControlWindows",
 				"Projects"
@@ -28,6 +26,16 @@ public class GitSourceControl : ModuleRules
 		if (Target.Version.MajorVersion == 5)
 		{
 			PrivateDependencyModuleNames.Add("ToolMenus");
+		};
+
+		if (Target.Type == TargetType.Editor)
+		{
+			PrivateDependencyModuleNames.AddRange(
+			new string[] {
+					"EditorStyle",
+					"UnrealEd",
+			}
+		);
 		}
 	}
 }
